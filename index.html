@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pl">
+    <head>
+        <meta charset="UTF-8">
+        <title>Lexiu • 3 minutowy odlicznik</title>
+        <link rel="stylesheet" href="odometer.css">
+        <link rel="icon" href="https://yt3.ggpht.com/ytc/AAUvwngsndT_AuPDXBE2ZCqWaoBaUKXNeBCHsPZiqbqVpw=s88-c-k-c0x00ffffff-no-rj">
+        <script src="odometer.js"></script>
+        <style>
+            body {
+                background-color: black;
+            }
+            .counter {
+                display: inline;
+            }
+            .counterstyle {
+                font-family: Lato; /* czcionka */
+                font-weight: 700; /* grubość czcionki */
+                position: absolute;
+                font-size: 200px;
+                word-spacing: -50px; /* odstęp między cyframi */
+                font-size: 250px; /* wielkość odlicznika */
+                color: white;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="counterstyle">
+            <div id="minutes" class="odometer counter">00</div>
+            <div class="counter dot">:</div>
+            <div id="seconds" class="odometer counter">00</div>
+        </div>
+        <script>
+            var time = 180; // czas //
+            (function() {
+            var minutes = Math.floor(time / 60);
+            var seconds = time - (minutes * 60);
+            if (minutes < 10) minutes = "0" + minutes;
+            if (seconds < 10) seconds = "0" + seconds;
+            document.getElementById("minutes").innerHTML = minutes;
+            document.getElementById("seconds").innerHTML = seconds;
+            if (time != 0) time = time - 1;
+            setTimeout(arguments.callee, 1000);
+            })();
+        </script>
+    </body>
+</html>
